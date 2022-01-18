@@ -1,4 +1,4 @@
-window.chunkLoadingGlobal = [];
+window.chunkLoadingGlobal = []; // it is not be used
 chunkLoadingGlobal.push = function ([chunkIds, moreModules]) {
   for (const moduleId in moreModules) {
     if (require.o(moreModules, moduleId)) {
