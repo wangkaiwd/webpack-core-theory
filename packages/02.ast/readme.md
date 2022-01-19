@@ -6,3 +6,8 @@
 
 * change function type
 * handle `this`
+
+### class to constructor function
+* create node depend on previous node
+* replace previous node with new multiple nodes
+
