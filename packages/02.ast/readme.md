@@ -30,6 +30,15 @@ const plugin = {
 * [babel-plugin-import](https://github.com/umijs/babel-plugin-import)
 * usage of lodash
 
+```js
+import { flatten, clone } from 'lodash'
+
+//       ↓ ↓ ↓ ↓ ↓ ↓
+
+import flatten from 'lodash/flatten'
+import clone from 'lodash/clone'
+```
+
 ### Using a Plugin
 
 * [Plugins](https://babeljs.io/docs/en/plugins)
