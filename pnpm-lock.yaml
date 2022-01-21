@@ -37,6 +37,14 @@ importers:
       babel-loader: 8.2.3_70acdf73bf8b5ce90b5f0f8b0b09e0d8
       babel-plugin-import: 1.13.3
 
+  packages/04.compiler:
+    specifiers:
+      '@babel/parser': ^7.16.10
+      '@babel/traverse': ^7.16.10
+    dependencies:
+      '@babel/parser': 7.16.10
+      '@babel/traverse': 7.16.10
+
 packages:
 
   /@babel/code-frame/7.16.7:
@@ -191,6 +199,12 @@ packages:
       js-tokens: 4.0.0
     dev: false
 
+  /@babel/parser/7.16.10:
+    resolution: {integrity: sha512-Sm/S9Or6nN8uiFsQU1yodyDW3MWXQhFeqzMPM+t8MJjM+pLsnFVxFZzkpXKvUXh+Gz9cbMoYYs484+Jw/NTEFQ==, tarball: '@babel/parser/download/@babel/parser-7.16.10.tgz'}
+    engines: {node: '>=6.0.0'}
+    hasBin: true
+    dev: false
+
   /@babel/parser/7.16.8:
     resolution: {integrity: sha512-i7jDUfrVBWc+7OKcBzEe5n7fbv3i2fWtxKzzCvOjnzSxMfWMigAhtfJ7qzZNGFNMsCCd67+uz553dYKWXPvCKw==, tarball: '@babel/parser/download/@babel/parser-7.16.8.tgz'}
     engines: {node: '>=6.0.0'}
@@ -209,8 +223,26 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/code-frame': 7.16.7
-      '@babel/parser': 7.16.8
+      '@babel/parser': 7.16.10
       '@babel/types': 7.16.8
+    dev: false
+
+  /@babel/traverse/7.16.10:
+    resolution: {integrity: sha512-yzuaYXoRJBGMlBhsMJoUW7G1UmSb/eXr/JHYM/MsOJgavJibLwASijW7oXBdw3NQ6T0bW7Ty5P/VarOs9cHmqw==, tarball: '@babel/traverse/download/@babel/traverse-7.16.10.tgz'}
+    engines: {node: '>=6.9.0'}
+    dependencies:
+      '@babel/code-frame': 7.16.7
+      '@babel/generator': 7.16.8
+      '@babel/helper-environment-visitor': 7.16.7
+      '@babel/helper-function-name': 7.16.7
+      '@babel/helper-hoist-variables': 7.16.7
+      '@babel/helper-split-export-declaration': 7.16.7
+      '@babel/parser': 7.16.10
+      '@babel/types': 7.16.8
+      debug: 4.3.3
+      globals: 11.12.0
+    transitivePeerDependencies:
+      - supports-color
     dev: false
 
   /@babel/traverse/7.16.8:
