@@ -12,6 +12,20 @@ import code when it used
 
 source code [in there](./demo/main.js)
 
+**note: insert script programmatic will async load js file**
+```js
+const loadScript = require.l = (chunkId) => {
+  const script = document.createElement('script');
+  script.src = chunkId + '.main.js';
+  document.head.appendChild(script);
+  script.onload = () => { // the moment have executed js code inside new insert script
+    // do something after script loaded
+  };
+};
+```
+
+
+
 ### Resource
 
 * [Understanding the Critical Rendering Path](https://bitsofco.de/understanding-the-critical-rendering-path/)
