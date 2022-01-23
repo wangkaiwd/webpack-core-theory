@@ -6,6 +6,10 @@
 2. merge options
 3. initial compiler by options
 
+final aim:
+
+generate code which after compiler to specify directory
+
 ### plugins
 
 ### loaders

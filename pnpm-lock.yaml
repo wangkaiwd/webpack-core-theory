@@ -39,11 +39,15 @@ importers:
 
   packages/04.compiler:
     specifiers:
+      '@babel/generator': ^7.16.8
       '@babel/parser': ^7.16.10
       '@babel/traverse': ^7.16.10
+      '@babel/types': ^7.16.8
     dependencies:
+      '@babel/generator': 7.16.8
       '@babel/parser': 7.16.10
       '@babel/traverse': 7.16.10
+      '@babel/types': 7.16.8
 
 packages:
 

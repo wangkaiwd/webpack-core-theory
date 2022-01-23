@@ -1,6 +1,13 @@
 const { SyncHook } = require('tapable');
 const Compilation = require('./compilation.js');
 const fs = require('fs');
+const { forEach } = require('./util');
+const path = require('path');
+
+function writeFile (filePath, data) {
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.writeFileSync(filePath, data);
+}
 
 class Compiler {
   constructor (options) {
@@ -17,10 +24,13 @@ class Compiler {
   }
 
   run (callback) {
-    const { entry } = this.options;
+    const { entry, output } = this.options;
     // call,tap
     this.hooks.run.call();
     this.compile((err, stats) => {
+      forEach(stats.assets, (filename, source) => {
+        writeFile(path.resolve(output.path, filename), source);
+      });
       callback(err, stats);
     });
     this.hooks.done.call();
