@@ -24,7 +24,7 @@ class Compiler {
   }
 
   run (callback) {
-    const { entry, output } = this.options;
+    const { output } = this.options;
     // call,tap
     this.hooks.run.call();
     this.compile((err, stats) => {
