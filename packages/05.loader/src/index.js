@@ -1,4 +1,4 @@
-import github from '../assets/github.jpeg';
+import github from '../assets/github-icon.png';
 
 console.log('github', github);
 const sum = (a, b) => a + b;

@@ -48,6 +48,10 @@ api:
 * [this.emitFile](https://webpack.js.org/api/loaders/#thisemitfile)
 * [Raw Loader](https://webpack.js.org/api/loaders/#raw-loader)
 
+### url loader
+* [data URIs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs#syntax)
+* [node.js to base64](https://stackoverflow.com/questions/24523532/how-do-i-convert-an-image-to-a-base64-encoded-data-url-in-sails-js-or-generally)
+
 ### resource
 * [concepts loader](https://webpack.js.org/concepts/#loaders)
 * [loaders](https://webpack.js.org/concepts/loaders/)

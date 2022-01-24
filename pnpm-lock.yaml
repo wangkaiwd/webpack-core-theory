@@ -62,11 +62,13 @@ importers:
       '@babel/preset-env': ^7.16.11
       loader-runner: ^4.2.0
       loader-utils: ^3.2.0
+      mime: ^3.0.0
     dependencies:
       '@babel/core': 7.16.7
       '@babel/preset-env': 7.16.11_@babel+core@7.16.7
       loader-runner: 4.2.0
       loader-utils: 3.2.0
+      mime: 3.0.0
 
 packages:
 
@@ -2925,6 +2927,12 @@ packages:
   /mime/1.6.0:
     resolution: {integrity: sha1-Ms2eXGRVO9WNGaVor0Uqz/BJgbE=, tarball: mime/download/mime-1.6.0.tgz}
     engines: {node: '>=4'}
+    hasBin: true
+    dev: false
+
+  /mime/3.0.0:
+    resolution: {integrity: sha1-s3RVDco6DBhEOwyVCmpY8ZMc96c=, tarball: mime/download/mime-3.0.0.tgz}
+    engines: {node: '>=10.0.0'}
     hasBin: true
     dev: false
 

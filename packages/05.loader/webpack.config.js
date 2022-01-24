@@ -22,12 +22,13 @@ module.exports = {
         ]
       },
       {
-        test: /\.jpeg$/,
+        test: /\.(jpeg|png)$/,
         use: [
           {
-            loader: 'file-loader',
+            loader: 'url-loader',
             options: {
-              filename: '[hash:8].[ext]'
+              filename: '[hash:8].[ext]',
+              limit: 8 * 1024
             }
           }
         ]
