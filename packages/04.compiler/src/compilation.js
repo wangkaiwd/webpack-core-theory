@@ -34,9 +34,9 @@ class Compilation {
   }
 
   build (callback) {
-    const { entry, output } = this.options;
+    const { entry, output, context } = this.options;
     forEach(entry, (key, val) => {
-      const entryModule = this.buildModule(key, path.resolve(val));
+      const entryModule = this.buildModule(key, path.resolve(context, val));
       const chunk = {
         name: key,
         entryModule,
@@ -104,6 +104,7 @@ class Compilation {
     module._source = code;
     module.dependencies.forEach(dep => {
       // ./src/xxx
+      // collect all dependency modules
       this.modules.push(this.buildModule(name, dep.depModuleId));
     });
   }
