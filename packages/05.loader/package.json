@@ -1,0 +1,16 @@
+{
+  "name": "05.loader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-loader": "^8.2.3",
+    "loader-runner": "^4.2.0"
+  }
+}
