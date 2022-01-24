@@ -1,6 +1,6 @@
 const path = require('path');
-const RunPlugin = require('./src/plugins/run.js');
-const DonePlugin = require('./src/plugins/done.js');
+const RunPlugin = require('./lib/plugins/run.js');
+const DonePlugin = require('./lib/plugins/done.js');
 
 const dirname = path.resolve('.');
 module.exports = {
@@ -21,8 +21,8 @@ module.exports = {
       {
         test: /\.js$/,
         use: [
-          path.resolve(dirname, 'src', 'loaders', 'logger1-loader'),
-          path.resolve(dirname, 'src', 'loaders', 'logger2-loader')
+          path.resolve(dirname, 'lib', 'loaders', 'logger1-loader'),
+          path.resolve(dirname, 'lib', 'loaders', 'logger2-loader')
         ]
       },
     ],
