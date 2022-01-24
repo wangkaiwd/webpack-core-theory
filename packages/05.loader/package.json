@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-loader": "^8.2.3",
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.11",
     "loader-runner": "^4.2.0"
   }
 }

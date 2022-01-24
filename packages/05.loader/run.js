@@ -69,7 +69,7 @@ if (request.startsWith('!!')) {
   loaders = [...postLoaders, ...inlineLoaders, ...normalLoaders, ...preLoaders];
 }
 
-const resolveLoader = (loader) => path.resolve(__dirname, 'loaders', loader);
+const resolveLoader = (loader) => path.resolve(__dirname, 'loader-chain', loader);
 runLoaders({
   resource: entry,
   // String: Absolute path to the resource (optionally including query string)

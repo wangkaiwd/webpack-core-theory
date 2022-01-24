@@ -17,6 +17,34 @@ omit(overridden) by prefixing in the request:
 * `-!`: omit all normal and pre loaders
 * `!!`: omit all normal,post and pre loaders
 
+### babel loader
+1. create loader
+  ```js
+  function loader (source) {
+    // ...some code
+    return source
+  }
+  
+  module.exports = loader;
+  ```
+2. handle webpack loader resolve path
+  ```js
+  const path = require('path');
+  module.exports = {
+    // ... other config
+    resolveLoader: {
+      modules: [path.resolve(__dirname, 'loaders')]
+    },
+  };
+  ```
+  
+api: 
+
+* [this.getOptions](https://webpack.js.org/api/loaders/#thisgetoptionsschema)
+* [this.callback](https://webpack.js.org/api/loaders/#thiscallback)
+
+
+
 ### resource
 * [concepts loader](https://webpack.js.org/concepts/#loaders)
 * [loaders](https://webpack.js.org/concepts/loaders/)
