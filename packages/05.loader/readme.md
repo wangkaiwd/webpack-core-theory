@@ -43,7 +43,10 @@ api:
 * [this.getOptions](https://webpack.js.org/api/loaders/#thisgetoptionsschema)
 * [this.callback](https://webpack.js.org/api/loaders/#thiscallback)
 
-
+### file loader
+* [interpolateName](https://github.com/webpack/loader-utils#interpolatename)
+* [this.emitFile](https://webpack.js.org/api/loaders/#thisemitfile)
+* [Raw Loader](https://webpack.js.org/api/loaders/#raw-loader)
 
 ### resource
 * [concepts loader](https://webpack.js.org/concepts/#loaders)

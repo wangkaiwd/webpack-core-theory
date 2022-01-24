@@ -1,11 +1,14 @@
 const core = require('@babel/core');
-const defaultOptions = {
-  inputSourceMap: true,
-  presets: ['@babel/preset-env']
-};
 
 function loader (source) {
-  const options = this.getOptions() || defaultOptions;
+  const defaultOptions = {
+    inputSourceMap: true,
+    presets: ['@babel/preset-env'],
+    sourceMaps: true,
+    sourceFileName: this.resourcePath
+  };
+  const options = { ...defaultOptions, ...this.getOptions() };
+
   const { code, map, ast } = core.transformSync(source, options);
   // return code;
   // return multiple value
