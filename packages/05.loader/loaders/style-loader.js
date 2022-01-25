@@ -1,12 +1,14 @@
 function loader (source) {
+
+}
+
+loader.pitch = function (remainingRequest, precedingRequest, data) {
+  console.log('pitch-style-loader', remainingRequest, precedingRequest, data);
   return `
     const style = document.createElement('style');
-    style.innerText = ${JSON.stringify(source)};
+    style.innerText = require(${JSON.stringify('!!' + remainingRequest)});
     document.head.appendChild(style);
     module.exports = ''
   `;
-}
-// loader.pitch = function (remainingRequest, precedingRequest, data) {
-//   console.log('pitch', remainingRequest, precedingRequest, data);
-// };
+};
 module.exports = loader;

@@ -55,6 +55,10 @@ omit(overridden) by prefixing in the request:
 * [asynchronous loader](https://webpack.js.org/api/loaders/#asynchronous-loaders)
 * [pitching loader](https://webpack.js.org/api/loaders/#pitching-loader)
 
+### implement loader runner
+
+
+
 ### resource
 * [concepts loader](https://webpack.js.org/concepts/#loaders)
 * [loaders](https://webpack.js.org/concepts/loaders/)

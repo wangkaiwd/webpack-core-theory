@@ -1,10 +1,10 @@
-const { runLoaders } = require('loader-runner');
+const { runLoaders } = require('./loader-runner');
 const path = require('path');
 const fs = require('fs');
 
 const entry = path.resolve(__dirname, './src/index.js');
 
-const request = `-!inline-loader2!inline-loader1!${entry}`;
+const request = `inline-loader2!inline-loader1!${entry}`;
 // from right to left
 // from down to up
 const rules = [
