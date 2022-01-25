@@ -17,7 +17,7 @@ omit(overridden) by prefixing in the request:
 * `-!`: omit all normal and pre loaders
 * `!!`: omit all normal,post and pre loaders
 
-### babel loader
+### how to write a loader
 1. create loader
   ```js
   function loader (source) {
@@ -37,9 +37,8 @@ omit(overridden) by prefixing in the request:
     },
   };
   ```
-  
-api: 
 
+### babel loader
 * [this.getOptions](https://webpack.js.org/api/loaders/#thisgetoptionsschema)
 * [this.callback](https://webpack.js.org/api/loaders/#thiscallback)
 
