@@ -56,8 +56,14 @@ omit(overridden) by prefixing in the request:
 * [pitching loader](https://webpack.js.org/api/loaders/#pitching-loader)
 
 ### implement loader runner
+feature:
+* pitch loader execute from left to right
+* normal loader execute from right to left
+* if pitch loader return something, it will start execute previous normal loader
+* support async or sync invoke
 
-
+note: 
+* not only async but also sync is execute callback after run loader and callback parameter is source code
 
 ### resource
 * [concepts loader](https://webpack.js.org/concepts/#loaders)
