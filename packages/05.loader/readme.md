@@ -51,6 +51,10 @@ omit(overridden) by prefixing in the request:
 * [data URIs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs#syntax)
 * [node.js to base64](https://stackoverflow.com/questions/24523532/how-do-i-convert-an-image-to-a-base64-encoded-data-url-in-sails-js-or-generally)
 
+### less loader
+* [asynchronous loader](https://webpack.js.org/api/loaders/#asynchronous-loaders)
+* [pitching loader](https://webpack.js.org/api/loaders/#pitching-loader)
+
 ### resource
 * [concepts loader](https://webpack.js.org/concepts/#loaders)
 * [loaders](https://webpack.js.org/concepts/loaders/)
