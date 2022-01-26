@@ -54,6 +54,7 @@ omit(overridden) by prefixing in the request:
 * [pitching loader](https://webpack.js.org/api/loaders/#pitching-loader)
 
 ### implement loader runner
+* [loader runner](https://github.com/webpack/loader-runner)
 * [diagram](https://excalidraw.com/#json=BpyAWaFb0LpXtuKtYsCOh,IrT49B9sThSuPRG5PL6o1A)
 
 ![](https://cdn.jsdelivr.net/gh/wangkaiwd/drawing-bed/Untitled-2022-01-26-1622.png)
