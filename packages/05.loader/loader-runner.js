@@ -32,18 +32,20 @@ const getRequest = (loaderContext, start, end) => {
   return requests.slice(start, end).join('!');
 };
 // async or sync both execute cb, result will be parameters
-const runSyncOrAsync = (fn, loaderContext, cb) => {
-  let sync = true;
+const runSyncOrAsync = (fn, loaderContext, next) => {
+  let isSync = true;
+  let isDone = false;
   loaderContext.callback = (fn, err, ...args) => {
-    cb(err, ...args);
+    isDone = true;
+    next(err, ...args);
   };
   loaderContext.async = () => {
-    sync = false;
+    isSync = false;
     return loaderContext.callback;
   };
   const result = fn();
-  if (sync) {
-    result ? cb(null, result) : cb(null);
+  if (isSync && !isDone) { // sync also can invoke this.callback function
+    result ? next(null, result) : next(null);
   }
 };
 const iteratePitchLoaders = (loaderContext, cb) => {
