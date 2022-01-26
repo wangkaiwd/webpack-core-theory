@@ -72,6 +72,12 @@ importers:
       loader-utils: 3.2.0
       mime: 3.0.0
 
+  packages/06.tapable:
+    specifiers:
+      tapable: ^2.2.1
+    dependencies:
+      tapable: 2.2.1
+
 packages:
 
   /@babel/code-frame/7.16.7:
