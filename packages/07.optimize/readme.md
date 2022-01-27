@@ -9,11 +9,11 @@
   * must specify html file
   * must usage combine with MiniCssExtractPlugin
 * [thread-loader](https://github.com/webpack-contrib/thread-loader)
-* [tree shaking](https://webpack.js.org/guides/tree-shaking/): webpack default use commonjs module, must use ESModule to implement tree shaking
+* [tree shaking](https://webpack.js.org/guides/tree-shaking/): production mode will auto enable
   ```js
   module.exports = {
     // use production environment
-    mode: 'development',
+    mode: 'production',
     module: {
       rules: [
         {
