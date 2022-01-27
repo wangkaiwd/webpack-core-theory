@@ -8,6 +8,34 @@
 * [purgecss-webpack-plugin](https://github.com/FullHuman/purgecss/tree/main/packages/purgecss-webpack-plugin)
   * must specify html file
   * must usage combine with MiniCssExtractPlugin
+* [thread-loader](https://github.com/webpack-contrib/thread-loader)
+* [tree shaking](https://webpack.js.org/guides/tree-shaking/): webpack default use commonjs module, must use ESModule to implement tree shaking
+  ```js
+  module.exports = {
+    // use production environment
+    mode: 'development',
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          use: [
+            {
+              loader: 'babel-loader',
+              options: {
+                presets: [
+                  // https://babeljs.io/docs/en/babel-preset-env#modules
+                  // enable transformation of ES module syntax to another module type  
+                  // modules: flase, preserve ES modules
+                  ['@babel/preset-env', { modules: false }]
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+  }
+  ```
 
 ### build library
 * [module-definition-systems](https://webpack.js.org/configuration/output/#module-definition-systems)

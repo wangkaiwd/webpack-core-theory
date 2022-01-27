@@ -10,10 +10,23 @@ const PATHS = {
 };
 module.exports = {
   entry: './src/index.js',
-  mode: 'development',
+  mode: 'production',
   devtool: 'source-map',
   module: {
     rules: [
+      {
+        test: /\.js$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['@babel/preset-env', { modules: false }]
+              ]
+            }
+          }
+        ]
+      },
       {
         test: /\.css$/,
         use: [
