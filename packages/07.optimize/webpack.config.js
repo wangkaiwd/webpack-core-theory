@@ -9,9 +9,28 @@ const PATHS = {
   src: path.join(__dirname, 'src')
 };
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    entry1: './src/index.js',
+    entry2: './src/index1.js'
+  },
   mode: 'development',
   devtool: 'source-map',
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        npm: {
+          test: /[\\/]node_modules[\\/]/,
+          name (module, chunks, cacheGroupKey) {
+            const resource = module.resource;
+            const reg = /[\\/]\.pnpm[\\/].*[\\/]node_modules[\\/](.*)[\\/]/;
+            const name = reg.exec(resource)[1];
+            return `${cacheGroupKey}.${name}`;
+          },
+          chunks: 'all',
+        }
+      }
+    },
+  },
   module: {
     rules: [
       {
@@ -53,7 +72,7 @@ module.exports = {
     })
   ],
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
   }
 };

@@ -12,7 +12,7 @@
 * [tree shaking](https://webpack.js.org/guides/tree-shaking/): production mode will auto enable
   ```js
   module.exports = {
-    // use production environment
+    // 1. use production environment
     mode: 'production',
     module: {
       rules: [
@@ -25,7 +25,7 @@
                 presets: [
                   // https://babeljs.io/docs/en/babel-preset-env#modules
                   // enable transformation of ES module syntax to another module type  
-                  // modules: flase, preserve ES modules
+                  // 2. modules: flase, preserve ES modules
                   ['@babel/preset-env', { modules: false }]
                 ]
               }
@@ -36,6 +36,16 @@
     },
   }
   ```
+
+### [code splitting](https://webpack.js.org/guides/code-splitting/)
+
+* multiple entry
+* dynamic import
+* split chunk
+* preload
+  * [preload-webpack-plugin](https://github.com/vuejs/preload-webpack-plugin)
+* prefetch
+* [SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/)
 
 ### build library
 * [module-definition-systems](https://webpack.js.org/configuration/output/#module-definition-systems)
