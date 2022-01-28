@@ -36,6 +36,7 @@
     },
   }
   ```
+* [cache](https://webpack.js.org/configuration/cache/)
 
 ### [code splitting](https://webpack.js.org/guides/code-splitting/)
 
@@ -46,6 +47,26 @@
   * [preload-webpack-plugin](https://github.com/vuejs/preload-webpack-plugin)
 * prefetch
 * [SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/)
+* [runtimeChunk](https://webpack.js.org/configuration/optimization/#optimizationruntimechunk)
+* [scope hoisting](https://webpack.js.org/plugins/module-concatenation-plugin/)
+
+### SplitChunksPlugin demo
+
+entry1:
+* -> module1
+* -> module2
+* -> jquery
+* -> asyncModule1 -> lodash
+
+entry2:
+* -> module1
+* -> module2
+* -> jquery
+
+entry3:
+* -> module1
+* -> module3
+* -> jquery
 
 ### build library
 * [module-definition-systems](https://webpack.js.org/configuration/output/#module-definition-systems)

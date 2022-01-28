@@ -16,6 +16,7 @@ module.exports = {
   mode: 'development',
   devtool: 'source-map',
   optimization: {
+    runtimeChunk: true,
     splitChunks: {
       cacheGroups: {
         npm: {
