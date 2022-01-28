@@ -1,4 +1,4 @@
-import github from '../assets/github-icon.png';
+import github from '../assets/github.jpeg';
 import './index.less';
 
 console.log('github', github);

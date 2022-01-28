@@ -36,6 +36,13 @@
     },
   }
   ```
+  `package.json`
+  ```json
+  {
+    "sideEffects": ["*.css"]
+  }
+  ```
+* [scope hoisting](https://webpack.js.org/plugins/module-concatenation-plugin/)
 * [cache](https://webpack.js.org/configuration/cache/)
 
 ### [code splitting](https://webpack.js.org/guides/code-splitting/)
@@ -48,7 +55,6 @@
 * prefetch
 * [SplitChunksPlugin](https://webpack.js.org/plugins/split-chunks-plugin/)
 * [runtimeChunk](https://webpack.js.org/configuration/optimization/#optimizationruntimechunk)
-* [scope hoisting](https://webpack.js.org/plugins/module-concatenation-plugin/)
 
 ### SplitChunksPlugin demo
 

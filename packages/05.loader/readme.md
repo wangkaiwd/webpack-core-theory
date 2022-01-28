@@ -41,11 +41,17 @@ omit(overridden) by prefixing in the request:
 * [this.callback](https://webpack.js.org/api/loaders/#thiscallback)
 
 ### file loader
+
+copy file to dist directory and return `filename`
+
 * [interpolateName](https://github.com/webpack/loader-utils#interpolatename)
 * [this.emitFile](https://webpack.js.org/api/loaders/#thisemitfile)
 * [Raw Loader](https://webpack.js.org/api/loaders/#raw-loader)
 
 ### url loader
+
+if file larger than `limit`, use file loader process assets, otherwise convert file to base64 string and as return value
+
 * [data URIs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs#syntax)
 * [node.js to base64](https://stackoverflow.com/questions/24523532/how-do-i-convert-an-image-to-a-base64-encoded-data-url-in-sails-js-or-generally)
 
