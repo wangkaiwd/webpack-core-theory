@@ -20,7 +20,13 @@ dist source code after compiled:
 ```js
 const modules = {
   './src/title': (module, exports, require) => {
-    // Object.defineProperty
+    // esModule -> getter
+    module.exports = {
+      get default () {
+        return 'title';
+      }
+    };
+    // common.js -> assign value directly
     module.exports.default = 'title';
   }
 };
@@ -89,3 +95,30 @@ title Object [Module] { default: [Getter] }
 ```
 
 **caveat: esModule default export will add `default` property for `module.exports` object and `import xxx from './xxx'` will access `module.exports.default`**
+
+esModule:
+```js
+let age
+const exports = {
+  get xxx() {
+    return age 
+  }
+}
+age = 10
+```
+
+commonjs：
+```js
+let age
+const exports = {
+  xxx: age
+}
+age = 10
+```
+
+esModule always access final value by getter but commonjs not
+
+commonjs:
+```js
+
+```

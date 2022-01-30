@@ -1,6 +1,12 @@
 const modules = {
   './src/title': (module, exports, require) => {
-    // Object.defineProperty
+    // esModule -> getter
+    module.exports = {
+      get default () {
+        return 'title';
+      }
+    };
+    // common.js -> assign value directly
     module.exports.default = 'title';
   }
 };
