@@ -76,6 +76,18 @@ var __webpack_modules__ = ({
   })
 });
 // ...some other code
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+  /*!**********************!*\
+    !*** ./src/index.js ***!
+    \**********************/
+  __webpack_require__.r(__webpack_exports__);
+  /* harmony import */
+  var _title__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./title */ './src/title.js');
+  // const title = require('./title');
+  // export default will auto access defualt property by webpack
+  console.log('title', _title__WEBPACK_IMPORTED_MODULE_0__['default']);
+})();
 ```
   
 source code
@@ -117,8 +129,3 @@ age = 10
 ```
 
 esModule always access final value by getter but commonjs not
-
-commonjs:
-```js
-
-```
