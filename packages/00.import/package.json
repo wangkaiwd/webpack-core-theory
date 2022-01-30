@@ -1,0 +1,12 @@
+{
+  "name": "import",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf ./dist && webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
