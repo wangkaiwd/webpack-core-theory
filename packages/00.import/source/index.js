@@ -1,9 +1,10 @@
 const modules = {
   './src/title': (module, exports, require) => {
+    // Object.defineProperty
     module.exports.default = 'title';
   }
 };
-const cache = {};
+const cache = {}; // avoid circular import and repeat import
 
 const _require = (moduleId) => {
   if (cache[moduleId]) {

@@ -20,11 +20,12 @@ dist source code after compiled:
 ```js
 const modules = {
   './src/title': (module, exports, require) => {
+    // Object.defineProperty
     module.exports.default = 'title';
   }
 };
-const cache = {};
-
+const cache = {}; // avoid circular import and repeat import
+// variable require has used by node.js, so there prefix `_` for it
 const _require = (moduleId) => {
   if (cache[moduleId]) {
     return cache[moduleId].exports;
