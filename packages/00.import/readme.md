@@ -40,4 +40,52 @@ const _require = (moduleId) => {
 const title = _require('./src/title');
 console.log('title', title.default);
 ```
+mix commonjs and esModule:
 
+source code
+```js
+// title.js
+const title = 'title'
+export { title }
+
+// index.js
+const title = require('title')
+// title === module.exports.default === undefined
+console.log('title',title)
+```
+
+`export` and `require`
+```js
+
+var __webpack_modules__ = ({
+  './src/title.js':
+  ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export */
+    __webpack_require__.d(__webpack_exports__, {
+      /* harmony export */   'title': () => (/* binding */ title)
+      /* harmony export */
+    });
+    const title = 'title';
+  })
+});
+// ...some other code
+```
+  
+source code
+```js
+// title.js
+export default 'title'
+
+// index.js
+const title = require('./title')
+// title = module.exports = { get default() { return 'title'}}
+// module.exports.default = 'title'
+console.log('title',title)
+```
+output:
+```text
+title Object [Module] { default: [Getter] }
+```
+
+**caveat: esModule default export will add `default` property for `module.exports` object and `import xxx from './xxx'` will access `module.exports.default`**

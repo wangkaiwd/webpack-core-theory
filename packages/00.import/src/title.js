@@ -1,1 +1,3 @@
-export default 'title'
+// export default 'title'
+const title = 'title';
+export { title };
