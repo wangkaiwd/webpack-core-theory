@@ -10,7 +10,6 @@
 import { defineComponent, reactive, toRefs } from 'vue';
 import image from './assets/github.jpeg';
 
-console.log('image', image);
 export default defineComponent({
   name: 'App',
   setup () {
