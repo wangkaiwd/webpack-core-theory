@@ -110,6 +110,7 @@ importers:
     specifiers:
       '@vitejs/plugin-vue': ^2.1.0
       '@vue/compiler-sfc': ^3.2.29
+      dedent: ^0.7.0
       es-module-lexer: ^0.9.3
       koa: ^2.13.4
       koa-static: ^5.0.0
@@ -119,6 +120,7 @@ importers:
     dependencies:
       '@vitejs/plugin-vue': 2.1.0_vite@2.7.13+vue@3.2.29
       '@vue/compiler-sfc': 3.2.29
+      dedent: 0.7.0
       es-module-lexer: 0.9.3
       koa: 2.13.4
       koa-static: 5.0.0
@@ -2199,6 +2201,10 @@ packages:
         optional: true
     dependencies:
       ms: 2.1.2
+    dev: false
+
+  /dedent/0.7.0:
+    resolution: {integrity: sha512-Q6fKUPqnAHAyhiUgFU7BUzLiv0kd8saH9al7tnu5Q/okj6dnupxyTgFIBjVzJATdfIAm9NAsvXNzjaKa+bxVyA==}
     dev: false
 
   /deep-equal/1.0.1:
