@@ -11,6 +11,7 @@ const injectProcess = () => {
   return async (ctx, next) => {
     await next();
     if (ctx.response.is('html')) {
+      // fixme: ast can do it ?
       const html = await readBody(ctx.body);
       let headContent = html.match(/<head>(.*)<\/head>/s)[1];
       headContent += injection;
