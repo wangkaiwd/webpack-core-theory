@@ -34,4 +34,14 @@ vite will transform url to `/src/assets/github.jpeg`
 
 ### theory
 * create static http server(koa)
-* replace import module `vue` path
+* replace import module `vue,@vue/xxx` path
+```js
+// browser only resolve / ./ ../ 
+import { createApp } from 'vue' 
+```
+* compile single file component
+  * `App.vue`
+
+### technology
+* koa 
+* [es-module-lexer](https://github.com/guybedford/es-module-lexer)
