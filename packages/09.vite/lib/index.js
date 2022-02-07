@@ -4,6 +4,7 @@ const serve = require('koa-static');
 const moduleRewrite = require('./moduleRewrite');
 const moduleResolve = require('./moduleResolve');
 const injectProcess = require('./injectProcess');
+const vuePlugin = require('./vuePlugin');
 const PORT = 3000;
 const root = process.cwd();
 
@@ -13,6 +14,8 @@ app.use(injectProcess());
 app.use(moduleRewrite(root));
 
 app.use(moduleResolve(root));
+
+app.use(vuePlugin(root));
 
 // create static http server, find content not execute next middleware
 app.use(serve(root));

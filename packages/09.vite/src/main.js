@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 
-console.log(createApp);
-// import App from './App.vue';
+import App from './App.vue';
 
-// createApp(App).mount('#app');
+console.log('App', App);
+
+createApp(App).mount('#app');

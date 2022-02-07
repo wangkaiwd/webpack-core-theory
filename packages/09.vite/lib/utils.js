@@ -38,5 +38,10 @@ function readBody (stream) {
   }
 }
 
+function isBrowserSupportPath (url) {
+  return url.startsWith('/') || url.startsWith('.');
+}
+
 exports.resolveVue = resolveVue;
 exports.readBody = readBody;
+exports.isBrowserSupportPath = isBrowserSupportPath;

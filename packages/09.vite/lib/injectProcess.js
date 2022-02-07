@@ -1,7 +1,7 @@
 const { readBody } = require('./utils');
 const dedent = require('dedent');
 const injectProcess = () => {
-  const injection = dedent`
+  const injection = `
     <script>
       window.process = {
         env: {NODE_ENV: 'development'}
@@ -15,7 +15,12 @@ const injectProcess = () => {
       const html = await readBody(ctx.body);
       let headContent = html.match(/<head>(.*)<\/head>/s)[1];
       headContent += injection;
-      ctx.body = html.replace(/<head>(.*)<\/head>/s, dedent`<head>${headContent}</head>`);
+      // todo: optimize html format after replace
+      ctx.body = html.replace(/<head>(.*)<\/head>/s, dedent(`
+        <head>
+          ${headContent}
+        </head>
+      `));
     }
   };
 };
