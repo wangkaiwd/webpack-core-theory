@@ -1,9 +1,7 @@
 const { resolveVue } = require('./utils');
 const fs = require('fs').promises;
 const moduleRegexp = /^\/@module\//;
-// main.js rewriteImport
-// ctx.path = '/@module/vue' -> esm.js -> rewriteImport
-//
+
 const moduleResolve = (root) => {
   return async (ctx, next) => {
     if (!moduleRegexp.test(ctx.path)) {

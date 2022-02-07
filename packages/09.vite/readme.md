@@ -32,16 +32,3 @@ vite will transform url to `/src/assets/github.jpeg`
   * [client-types](https://vitejs.dev/guide/features.html#client-types)
   * [triple slash directive](https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html#-reference-types-)
 
-### theory
-* create static http server(koa)
-* replace import module `vue,@vue/xxx` path
-```js
-// browser only resolve / ./ ../ 
-import { createApp } from 'vue' 
-```
-* compile single file component
-  * `App.vue`
-
-### technology
-* koa 
-* [es-module-lexer](https://github.com/guybedford/es-module-lexer)
