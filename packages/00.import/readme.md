@@ -48,6 +48,22 @@ console.log('title', title.default);
 ```
 mix commonjs and esModule:
 
+```js
+// esModule access module.default
+// commonjs access module directly
+__webpack_require__.n = (module) => {
+  /******/
+  var getter = module && module.__esModule ?
+    /******/        () => (module['default']) :
+    /******/        () => (module);
+  /******/
+  __webpack_require__.d(getter, { a: getter });
+  /******/
+  return getter;
+  /******/
+};
+```
+
 source code
 ```js
 // title.js

@@ -6,9 +6,23 @@ function vuePlugin (root) {
   return async (ctx, next) => {
     if (/\.vue$/.test(ctx.path)) {
       const source = await fs.readFile(path.join(root, ctx.path), { encoding: 'utf8' });
-      const { descriptor } = compilerSfc.parse(source);
+      const { parse, compileTemplate } = compilerSfc;
+      const { descriptor } = parse(source);
+      const render = compileTemplate({
+          source: descriptor.template.content,
+          id: `data-${descriptor.filename}`,
+          filename: descriptor.filename
+        }
+      );
       ctx.type = 'js';
-      ctx.body = descriptor.script.content;
+      let content = descriptor.script.content;
+      content = content.replace('export default', 'const script = ');
+      ctx.body = `
+        ${render.code}
+        ${content}
+        script.render = render 
+        export default script
+      `;
     } else {
       await next();
     }

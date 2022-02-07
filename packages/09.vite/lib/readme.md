@@ -5,7 +5,7 @@
 // browser only resolve / ./ ../ 
 import { createApp } from 'vue' 
 ```
-* compile single file component(`compiler-sfc`)
+* compile single file component([`compiler-sfc`](https://github.com/vuejs/core/blob/main/packages/compiler-sfc/README.md))
   * `App.vue`
 
 ### technology
