@@ -1,12 +1,18 @@
 const traverse = (node, parent, visitor) => {
-  visitor.enter(node, parent);
-  if (typeof node === 'object') {
+  if (typeof node === 'object' && node != null) {
+    if (visitor.enter) {
+      visitor.enter(node, parent);
+    }
     const keys = Object.keys(node);
     keys.forEach(key => {
-      traverse(node[key], node, visitor);
+      if (!key.startsWith('_')) {
+        traverse(node[key], node, visitor);
+      }
     });
+    if (visitor.leave && node) {
+      visitor.leave(node, parent);
+    }
   }
-  visitor.leave(node, parent);
 };
 const walk = (ast, { enter, leave }) => {
   ast.body.forEach(node => {
@@ -14,4 +20,7 @@ const walk = (ast, { enter, leave }) => {
   });
 };
 
-module.exports = walk;
+module.exports = {
+  walk,
+  traverse
+};

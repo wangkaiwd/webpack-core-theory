@@ -19,7 +19,10 @@ class Bundle {
   generate () {
     let code = '';
     this.statements.forEach(statement => {
-      const content = statement._source;
+      let content = statement._source;
+      if (statement.type === 'ExportNamedDeclaration') {
+        content = content.replace(/export\s+/, '');
+      }
       code += `${content}\n`;
     });
     return code;

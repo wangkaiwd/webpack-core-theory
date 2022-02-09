@@ -1,5 +1,6 @@
 const { parse } = require('acorn');
 const analyse = require('./ast/analyse');
+const path = require('path');
 
 class Module {
   constructor ({ code, path, bundle }) {
@@ -9,6 +10,7 @@ class Module {
     this.ast = parse(code, { ecmaVersion: 'latest', sourceType: 'module' });
     this.imports = {};
     this.exports = {};
+    this.definitions = {};
     this.analyse();
   }
 
@@ -35,16 +37,55 @@ class Module {
         }
       }
     });
+    // 1. generate scope chain
+    // 2. collect outside variables
     analyse(this.ast, this.code);
+    this.ast.body.forEach(statement => {
+      Object.keys(statement._defines).forEach(defineKey => {
+        this.definitions[defineKey] = statement;
+      });
+    });
   }
 
   expandAllStatements () {
     const allStatements = [];
     this.ast.body.forEach(statement => {
-      // todo: such as move statement
-      allStatements.push(statement);
+      // no need import statement
+      if (statement.type === 'ImportDeclaration') {
+        return;
+      }
+      const statements = this.expandStatement(statement);
+      allStatements.push(...statements);
     });
     return allStatements;
+  }
+
+  expandStatement (statement) {
+    const result = [];
+    statement._included = true;
+    const dependencies = Object.keys(statement._dependsOn);
+    dependencies.forEach(name => {
+      const definitions = this.define(name);
+      result.push(...definitions);
+    });
+    result.push(statement);
+    return result;
+  }
+
+  define (name) {
+    if (this.imports.hasOwnProperty(name)) { // outside dependency
+      const { localName, importedName, source } = this.imports[name];
+      const importedModule = this.bundle.fetchModule(path.resolve(path.dirname(this.path), source));
+      const { localName: exportLocalName, exportName, expression } = importedModule.exports[importedName];
+      return importedModule.define(exportLocalName);
+    } else {
+      const statement = this.definitions[name];
+      if (statement && !statement._included) {
+        return this.expandStatement(statement);
+      } else {
+        return [];
+      }
+    }
   }
 }
 

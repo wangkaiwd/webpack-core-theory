@@ -1,4 +1,4 @@
-const walk = require('./walk');
+const { traverse } = require('./walk');
 const Scope = require('./scope');
 const analyse = (ast, code, module) => {
   let scope = new Scope();
@@ -6,9 +6,9 @@ const analyse = (ast, code, module) => {
   // there take advantage of global variable
   ast.body.forEach(statement => {
     Object.defineProperties(statement, {
-      _defines: { value: {} },
+      _defines: { value: {} }, // global
       _included: { value: false, writable: true }, // whether occur in bundle or not
-      _dependsOn: { value: {} },
+      _dependsOn: { value: {} }, // outside
       _source: { value: code.slice(statement.start, statement.end) }
     });
     const addToScope = (name) => {
@@ -17,7 +17,7 @@ const analyse = (ast, code, module) => {
         statement._defines[name] = true;
       }
     };
-    walk(ast, {
+    traverse(statement, ast.body, {
       enter (node) {
         let newScope = undefined;
         if (node.type === 'FunctionDeclaration') {
@@ -46,6 +46,20 @@ const analyse = (ast, code, module) => {
     });
   });
 
+  ast.body.forEach(statement => {
+    traverse(statement, ast.body, {
+      enter (node) {
+        if (node.type === 'Identifier') {
+          const scope = node._scope;
+          const { name } = node;
+          const defineScope = scope.findDefineScope(name);
+          if (!defineScope) {
+            statement._dependsOn[name] = true;
+          }
+        }
+      }
+    });
+  });
 };
 
 module.exports = analyse;
