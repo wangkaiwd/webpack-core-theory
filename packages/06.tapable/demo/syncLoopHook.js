@@ -1,6 +1,6 @@
 const { SyncLoopHook } = require('tapable');
 
-// return value is non-undefined will restart from the first hook
+// return value is non-undefined will restart from the first plugin
 
 let counter1 = 0, counter2 = 0, counter3 = 0;
 
@@ -24,7 +24,6 @@ hook.tap('2', () => {
   return true;
 });
 
-
 hook.tap('3', () => {
   console.log('3', counter3);
   if (++counter3 === 3) {
@@ -34,4 +33,4 @@ hook.tap('3', () => {
   return true;
 });
 
-hook.call()
+hook.call();
