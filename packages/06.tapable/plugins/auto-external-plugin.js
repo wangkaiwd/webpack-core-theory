@@ -1,3 +1,6 @@
+const { ExternalModule } = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 class AutoExternalPlugin {
   constructor (options) {
     this.name = 'AutoExternalPlugin';
@@ -24,8 +27,30 @@ class AutoExternalPlugin {
           }
         });
       });
+      // AsyncSeriesBailHook
       normalModuleFactory.hooks.factorize.tapAsync(this.name, (resolveData, cb) => {
-        console.log('request', resolveData.request);
+        const { request } = resolveData;
+        if (this.externalModules.includes(request)) {
+          const { variable } = this.options[request];
+          // return non-undefined will stop execute subsequent hook
+          // ExternalModule do what ?
+          cb(null, new ExternalModule(variable, 'window', request));
+        } else {
+          cb(null);
+        }
+      });
+    });
+    compiler.hooks.compilation.tap(this.name, (compilation) => {
+      HtmlWebpackPlugin.getHooks(compilation).alterAssetTags.tapAsync(this.name, (data, cb) => {
+        this.importedModules.forEach((packageName) => {
+          data.assetTags.scripts.unshift({
+            tagName: 'script',
+            attributes: {
+              src: this.options[packageName].url
+            }
+          });
+        });
+        cb(null, data);
       });
     });
   }
