@@ -6,7 +6,7 @@ hook.tap('1', (name, age) => {
   console.log('tap-1');
 });
 
-hook.tap('1', (name, age) => {
+hook.tap('2', (name, age) => {
   console.log(name, age);
   console.log('tap-2');
 });

@@ -1,3 +1,4 @@
+
 ## tapable
 
 * [tapable](https://github.com/webpack/tapable)
@@ -31,3 +32,23 @@ parent class member properties and prototype methods will be added to child clas
   
 ### thinking 
 * tap async hook still work ?
+
+### implement
+reassign current function when current function executing 
+```js
+class Hook {
+  constructor(args) {
+    this.call = CALL_DELEGATE
+    // some other code ...
+  }
+}
+const CALL_DELEGATE = function(...args) {
+	this.call = this._createCall("sync");
+	return this.call(...args);
+};
+
+const hook = new Hook(['name','age'])
+hook.call()
+// invoke new create function in first executing
+hook.call()
+```
