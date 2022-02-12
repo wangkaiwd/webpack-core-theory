@@ -1,9 +1,9 @@
-const { Hook } = require('./Hook');
+const Hook = require('./Hook');
 const HookCodeFactory = require('./HookCodeFactory');
 
 class SyncHookCodeFactory extends HookCodeFactory {
   content () {
-
+    return this.callTapSeries();
   }
 }
 

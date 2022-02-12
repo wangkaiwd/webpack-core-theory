@@ -1,4 +1,5 @@
-const { SyncHook } = require('tapable');
+const { SyncHook } = require('../lib/index');
+// const { SyncHook } = require('tapable');
 
 const hook = new SyncHook(['name', 'age']);
 hook.tap('1', (name, age) => {

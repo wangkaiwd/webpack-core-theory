@@ -34,7 +34,7 @@ parent class member properties and prototype methods will be added to child clas
 * tap async hook still work ?
 
 ### implement
-reassign current function when current function executing 
+* reassign current function when current function executing 
 ```js
 class Hook {
   constructor(args) {
@@ -52,3 +52,4 @@ hook.call()
 // invoke new create function in first executing
 hook.call()
 ```
+* [Usage of new Function](https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-function-p1-p2-pn-body)
