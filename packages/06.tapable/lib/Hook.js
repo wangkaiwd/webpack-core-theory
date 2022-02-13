@@ -25,6 +25,7 @@ class Hook {
     this.call = CALL_DELEGATE;
     this.callAsync = CALL_ASYNC_DELEGATE;
     this.promise = PROMISE_DELEGATE;
+    this.interceptors = [];
   }
 
   compile (options) {
@@ -48,6 +49,7 @@ class Hook {
       options = { name: options };
     }
     options = { type, fn, ...options };
+    options = this._runRegisterInterceptor(options);
     this._insert(options);
   }
 
@@ -55,12 +57,26 @@ class Hook {
     this.taps.push(options);
   }
 
+  intercept (interceptor) {
+    this.interceptors.push(interceptor);
+  }
+
   _createCall (type) {
     return this.compile({
       type,
       taps: this.taps,
-      args: this.args
+      args: this.args,
+      interceptors: this.interceptors
     });
+  }
+
+  _runRegisterInterceptor (tapInfo) {
+    this.interceptors.forEach(interceptor => {
+      if (interceptor.register) {
+        tapInfo = interceptor.register(tapInfo);
+      }
+    });
+    return tapInfo;
   }
 }
 

@@ -38,9 +38,18 @@ class HookCodeFactory {
   }
 
   callTap (i) {
-    const { taps } = this.options;
+    const { taps, interceptors } = this.options;
     const { type } = taps[i];
     let code = '';
+    if (interceptors.length > 0) {
+      code += `const _tap${i} = this.taps[${i}];\n`;
+      for (let j = 0; j < interceptors.length; j++) {
+        const interceptor = interceptors[j];
+        if (interceptor.tap) {
+          code += ` _interceptors[${j}].tap(_tap${j}) `;
+        }
+      }
+    }
     switch (type) {
       case 'sync':
         code += `
@@ -121,7 +130,23 @@ class HookCodeFactory {
 
   header () {
     // this -> SyncHook instance
-    return `const _x = this._x\n`;
+    let code = '';
+    code += `const _x = this._x\n`;
+    const { interceptors } = this.options;
+    if (interceptors.length > 0) {
+      code += `
+        const _taps = this.taps;
+        const _interceptors = this.interceptors;
+      `;
+      for (let i = 0; i < interceptors.length; i++) {
+        const interceptor = interceptors[i];
+        if (interceptor.call) {
+          code += `_interceptors[${i}].call(${this.args()})\n`;
+        }
+      }
+
+    }
+    return code;
   }
 
   content () {
