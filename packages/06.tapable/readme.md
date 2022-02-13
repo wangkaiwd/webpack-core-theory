@@ -53,3 +53,12 @@ hook.call()
 hook.call()
 ```
 * [Usage of new Function](https://tc39.es/ecma262/multipage/fundamental-objects.html#sec-function-p1-p2-pn-body)
+
+
+feature:
+* SyncHook
+* AsyncParallelHook
+* Interceptor
+* HookMap
+* stage: set `tap` `fn`'s position in `taps` object
+* before: `tap` `fn` position before which one in `taps` object
