@@ -117,6 +117,40 @@ const title = require('./title')
 // module.exports.default = 'title'
 console.log('title',title)
 ```
+
+`export default` and `require`
+```js
+var __webpack_modules__ = ({
+  /***/ './src/title.js':
+  /*!**********************!*\
+    !*** ./src/title.js ***!
+    \**********************/
+  /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+    'use strict';
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export */
+    __webpack_require__.d(__webpack_exports__, {
+      /* harmony export */   'default': () => (__WEBPACK_DEFAULT_EXPORT__)
+      /* harmony export */
+    });
+    /* harmony default export */
+    const __WEBPACK_DEFAULT_EXPORT__ = ('title');
+  })
+});
+// some other code ...
+
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+  /*!**********************!*\
+    !*** ./src/index.js ***!
+    \**********************/
+  // import title from './title';
+  const title = __webpack_require__(/*! ./title */ './src/title.js');
+  console.log('title', title);
+})();
+```
+
 output:
 ```text
 title Object [Module] { default: [Getter] }

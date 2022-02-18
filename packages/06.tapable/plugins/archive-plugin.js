@@ -1,7 +1,8 @@
 const JSZip = require('jszip');
 
 class ArchivePlugin {
-  constructor (props) {
+  constructor (options) {
+    this.options = options;
     this.name = 'ArchivePlugin';
   }
 
