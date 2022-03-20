@@ -5,7 +5,11 @@ module.exports = {
   entry: './src/index.js',
   mode: 'development',
   context: path.resolve(),
-  plugins: [new HtmlWebpackPlugin()],
+  devServer: {
+    // default is only ?
+    hot: true
+  },
+  plugins: [new HtmlWebpackPlugin({ template: 'index.html' })],
   output: {
     filename: '[name].js'
   }
