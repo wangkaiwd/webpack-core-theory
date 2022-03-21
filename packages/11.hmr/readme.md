@@ -15,3 +15,8 @@
 ```
 
 it will execute `node_modules/.bin/webpack`, this is a shell script
+
+### Reference
+
+* [hrm 原理解析](https://zhuanlan.zhihu.com/p/30669007)
+* [webpack-hmr](https://github.com/careteenL/webpack-hmr)
