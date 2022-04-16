@@ -59,6 +59,8 @@ if file larger than `limit`, use file loader process assets, otherwise convert f
 * [asynchronous loader](https://webpack.js.org/api/loaders/#asynchronous-loaders)
 * [pitching loader](https://webpack.js.org/api/loaders/#pitching-loader)
 
+### style loader
+
 ### implement loader runner
 * [loader runner](https://github.com/webpack/loader-runner)
 * [diagram](https://excalidraw.com/#json=BpyAWaFb0LpXtuKtYsCOh,IrT49B9sThSuPRG5PL6o1A)
